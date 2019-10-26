@@ -586,7 +586,7 @@ class Device(metaclass=_Singleton):
 
     def device_UUID(self, cust=b'\x01'):
          """Return a stable unique UUID based on the serial number of the device and a custom byte."""
-        if not (type(ver) is bytes and 1 == len(ver)):
+        if not (type(cust) is bytes and 1 == len(cust)):
             raise Atecc608aException('Custom byte must be exactly one byte.')
         serial = self._serial_number()
         return UUID(bytes=(bytes(serial + b'\x0a\xff\x11\x03\x19\x71' + cust)))
