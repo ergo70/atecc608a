@@ -173,7 +173,7 @@ class Device(metaclass=_Singleton):
 
     def _write_32_bytes_to_slot(self, data, slot, lock_slot_after_generation, i_am_really_really_sure):
         self._check_valid_slot(slot)
-        if (not type(data) is bytearray) and 32 != len(data):
+        if (not type(data) is bytearray) or 32 != len(data):
             raise Atecc608aException(
                 'Data must be bytearray[32]')
 
